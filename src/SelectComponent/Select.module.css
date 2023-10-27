@@ -3,11 +3,9 @@
     border-radius: 8px;
     border: 1px solid  #D5D6DC;
     background: #FFF;
-    padding: 8px 12px
+    padding: 8px 12px;
+    color: #ACADB9
 }
 .selectInput:hover{
-    border-radius: 8px;
     border: 1px solid  #5E96FC;
-    background: #FFF;
-    padding: 8px 12px
 }

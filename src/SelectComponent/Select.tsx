@@ -1,34 +1,52 @@
 import React, {useState} from 'react';
-import s from 'src/Select/Select.module.css'
+import s from './Select.module.css'
 import {bool} from "prop-types";
+import {Simulate} from "react-dom/test-utils";
+import click = Simulate.click;
 
-const Select = () => {
-    const [title, setTitle] = useState('')
-    const [isClick, setClick] = useState<boolean>(true)
+interface Props {
+    comp: React.ElementType; // 👈️ type it as React.ElementType
+}
+
+const Select= () => {
+    const [title, setTitle] = useState('d')
+    const [isClick, setClick] = useState<boolean>(false)
 
     const data = [
         {id: 1, title: 'HTML'},
         {id: 2, title: 'js'},
         {id: 1, title: 'css'},
     ]
-
-    const optionType = (data: any) => {
-
-        return data.map((el: any) => {
-            return <li  style = {{borderRadius: '8px', padding:'8px', color:'#232134'}} key={el.id}>{el.title}</li>
-        })
+    const onClickHandler = () => {
+        if (isClick) {
+            setClick(false)
+        }else {
+            setClick(true)
+        }
     }
 
 
     return (
         <div>
-            <div  className={s.selectInput}>
-                select
+            <div onClick={onClickHandler} className={s.selectInput}>
+
+                {
+                    !title.length?
+                        <>Выберете отрасль</>:
+                        <>{title}</>
+                }
             </div>
-            <ul  style={{border: '1px solid #D5D6DC', padding: '4px 6px' ,borderRadius: '8px',
-                background: '#FFF'}} >
-                {isClick ?optionType(data): ''}
+            {isClick?  <ul style={{
+                border: '1px solid #D5D6DC', padding: '4px 6px', borderRadius: '8px',
+                background: '#FFF'
+            }}>
+                { data.map((el: any) => {
+
+                    return <li style={{borderRadius: '8px', padding: '8px', color: '#232134'}}
+                               key={el.id}>{el.title}</li>
+                })}
             </ul>
+           :'' }
 
 
         </div>

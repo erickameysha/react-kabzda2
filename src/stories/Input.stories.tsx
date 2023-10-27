@@ -1,8 +1,16 @@
+import {Button} from "./Button";
+import Select from "../SelectComponent/Select";
 
 
 export default {
-    title: 'Button',
+    title: 'Input',
+    // component: SelectComponent
 }
 
 
-export const InputStories = ()=>  <input>
+export const UncontrolledInput = ()=> {
+    return <input/>
+}
+export const ControlledInput = ()=> {
+    return <input value={'It-incubator'}/>
+}

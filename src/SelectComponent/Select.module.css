@@ -9,3 +9,6 @@
 .selectInput:hover{
     border: 1px solid  #5E96FC;
 }
+.selectInputTitle{
+    color: #232134;
+}

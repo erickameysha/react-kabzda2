@@ -24,25 +24,30 @@ const Select= () => {
             setClick(true)
         }
     }
+    const setTitleHander = (title: string) => {
+     setTitle(title)
+    }
 
 
     return (
         <div>
             <div onClick={onClickHandler} className={s.selectInput}>
-
                 {
                     !title.length?
                         <>Выберете отрасль</>:
-                        <>{title}</>
+                        <span className={s.selectInputTitle}>{title}</span>
                 }
             </div>
             {isClick?  <ul style={{
+                height:'4px',
                 border: '1px solid #D5D6DC', padding: '4px 6px', borderRadius: '8px',
                 background: '#FFF'
             }}>
                 { data.map((el: any) => {
-
-                    return <li style={{borderRadius: '8px', padding: '8px', color: '#232134'}}
+                    const setItemHandler = (title:string) => {
+                        setTitleHander(title)
+                    }
+                    return <li onClick={()=>setTitleHander(el.title)} style={{borderRadius: '8px', padding: '8px', color: '#232134'}}
                                key={el.id}>{el.title}</li>
                 })}
             </ul>
